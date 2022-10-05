@@ -193,10 +193,10 @@ async function fetchAllQ(
 }
 
 const Categories: Category[] = [
-  // "tags",
-  // "artists",
-  // "characters",
-  // "parodies",
+  "tags",
+  "artists",
+  "characters",
+  "parodies",
   "groups",
 ];
 
