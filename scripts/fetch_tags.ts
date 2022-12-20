@@ -58,7 +58,7 @@ async function init() {
   const browser = await puppeteer.launch({
     headless: false,
     args: [
-      "--window-size=1280,720",
+      "--window-size=640,480",
       // "--disable-infobars",
       // "--disable-gpu",
       // "--disable-dev-shm-usage",
