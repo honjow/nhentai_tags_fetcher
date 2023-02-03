@@ -71,22 +71,40 @@ async function init() {
   });
   browserWSEndpoint = await browser.wsEndpoint();
   const page = await browser.newPage();
+  let ua = await page.browser().userAgent();
+  // print console
+  // console.log(ua);
+  ua = ua.replace("HeadlessChrome", "Chrome");
+  // console.log(ua);
+  await page.setUserAgent(ua);
   await page.setDefaultNavigationTimeout(0); // 禁用超时
   await page.setViewport({
     width: 1280,
     height: 720,
   });
   await page.goto(url);
+  // set timeout
+  // await page.waitForTimeout(3000);
+  
+  // setTimeout(async () => {
+  //   await page.screenshot({ path: "tt.png" });
+  // }, 3000);
+
+  // await page.screenshot({ path: "screenshot.png" });
   await page.waitForSelector(".container.index-container");
   await page.close();
 }
 
 async function fetchHtml(category: Category, pageNum = 1): Promise<string> {
+  // console.log("fetchHtml");
   // 复用浏览器
   const browser = await puppeteer.connect({ browserWSEndpoint });
   // const browser = await puppeteer.launch({ headless: false });
 
   const page = await browser.newPage();
+  let ua = await page.browser().userAgent();
+  ua = ua.replace("HeadlessChrome", "Chrome");
+  await page.setUserAgent(ua);
 
   await page.setDefaultNavigationTimeout(0); // 禁用超时
 
